@@ -1,5 +1,6 @@
 import React from "react";
 import UserContext from "../../contexts/UserContext";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -35,10 +36,13 @@ export default function LoginScreen() {
     }
 
     return(
-        <form onSubmit={handleLogin}>
-            <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="email" required />
-            <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="senha" required />
-            <button type="submit">ENTRAR</button>
-        </form>
+        <>
+            <form onSubmit={handleLogin}>
+                <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="email" required />
+                <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="senha" required />
+                <button type="submit">ENTRAR</button>
+            </form>
+            <Link to="/cadastro">Não tem uma conta? Cadastre-se!</Link>
+        </>
     );
 }

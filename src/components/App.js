@@ -1,6 +1,7 @@
 import '../assets/styles/reset.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginScreen from "./LoginScreen/LoginScreen";
+import RegisterScreen from './RegisterScreen/RegisterScreen';
 import React from 'react';
 import UserContext from "../contexts/UserContext";
 
@@ -12,6 +13,7 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<LoginScreen />} />
+                    <Route path="/cadastro" element={<RegisterScreen />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
