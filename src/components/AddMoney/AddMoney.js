@@ -14,7 +14,7 @@ export default function AddMoney() {
         event.preventDefault();
 
         const body = {
-            value: parseFloat(value).toFixed(2),
+            value: parseFloat(value),
             description
         };
 

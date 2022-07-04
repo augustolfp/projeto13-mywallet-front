@@ -33,7 +33,7 @@ export default function AccountBalance() {
         <div>
             <PrintBalance />
         </div>
-        <h1>Saldo: {userData.balance}</h1>
+        <h1>Saldo: {parseFloat(userData.balance).toFixed(2)}</h1>
         <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
         </> 
     );
