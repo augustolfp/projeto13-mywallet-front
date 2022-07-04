@@ -36,6 +36,7 @@ export default function RegisterScreen() {
 
     return(
         <Container>
+            <h1>MyWallet</h1>
             <Form onSubmit={handleRegister}>
                 <input type="text" name="name" placeholder="Nome" onChange={e => setName(e.target.value)} required />
                 <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="E-mail" required />
@@ -88,6 +89,13 @@ const Container = styled.div`
         a:visited {
             color: white;
         }
+
+    h1 {
+        font-family: 'Saira Stencil One', cursive;
+        color: white;
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
 
 `
 

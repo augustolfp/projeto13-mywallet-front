@@ -40,6 +40,7 @@ export default function LoginScreen() {
 
     return(
         <Container>
+            <h1>MyWallet</h1>
             <Form onSubmit={handleLogin}>
                 <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="E-mail" required />
                 <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" required />
@@ -89,6 +90,13 @@ const Container = styled.div`
         a:visited {
             color: white;
         }
+    
+    h1 {
+        font-family: 'Saira Stencil One', cursive;
+        color: white;
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
 
 `
 
