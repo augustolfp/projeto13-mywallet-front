@@ -5,14 +5,15 @@ import axios from 'axios';
 
 
 export default function AccountBalance() {
+    const navigate = useNavigate();
     const {token} = React.useContext(UserContext);
-    const [userData, setUserdata] = React.useState([]);
+    const {userData, setUserData} = React.useContext(UserContext);
 
     useEffect(() => {
         const requestBalance = axios.get("http://localhost:5000/get-balance", token);
         requestBalance.then(answer => {
             console.log(answer.data)
-            setUserdata(answer.data);
+            setUserData(answer.data);
         });
         requestBalance.catch(answer => console.log(answer));
     },[]);
@@ -32,6 +33,8 @@ export default function AccountBalance() {
         <div>
             <PrintBalance />
         </div>
+        <h1>Saldo: {userData.balance}</h1>
+        <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
         </> 
     );
 }
