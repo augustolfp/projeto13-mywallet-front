@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 export default function LoginScreen() {
+    const navigate = useNavigate();
     const {setToken, setUserData} = React.useContext(UserContext);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -23,10 +24,11 @@ export default function LoginScreen() {
         loginRequest.then(answer => {
             setToken({
                 headers: {
-                    Authorization: `Bearer ${answer.data.token}`
+                    Authorization: `Bearer ${answer.data}`
                 }
             })
             alert("deu certo!");
+            navigate("/historico");
         });
 
         loginRequest.catch(answer => {
