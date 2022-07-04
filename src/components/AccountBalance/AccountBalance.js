@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import styled from 'styled-components';
 
 export default function AccountBalance() {
     const navigate = useNavigate();
@@ -20,7 +20,11 @@ export default function AccountBalance() {
 
     function PrintBalance() {
         if(userData.transactions) {
-            return userData.transactions.map((obj, index) => <h2 key={index}>{obj.description}   {obj.value}</h2>);
+            return userData.transactions.map((obj, index) => 
+            <OpBracket key={index}>
+                <div>{obj.description}</div>
+                <Currency>{parseFloat(obj.value).toFixed(2)}</Currency>
+            </OpBracket>);
         }
         else {
             return <h2>Carregando...</h2>
@@ -28,13 +32,78 @@ export default function AccountBalance() {
     }
 
     return(
-        <>
+        <Container>
+        <NameBox>
         <h1>Olá, {userData.name}</h1>
-        <div>
-            <PrintBalance />
-        </div>
-        <h1>Saldo: {parseFloat(userData.balance).toFixed(2)}</h1>
+        </NameBox>
+        <BalanceBox>
+            <div>
+                <PrintBalance />
+            </div>
+            <OpBracket>
+                <NetBalance>SALDO</NetBalance>
+                <Currency>{parseFloat(userData.balance).toFixed(2)}</Currency>
+            </OpBracket>
+        </BalanceBox>
+        
         <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
-        </> 
+        </Container> 
     );
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #8C11BE;
+
+    button {
+        width: 155px;
+        height: 114px;
+        background-color: #A328D6;
+        border-style: none;
+        border-radius: 5px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        color: white;
+    }
+`
+const NameBox = styled.div`
+    margin: 25px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+`
+const BalanceBox = styled.div`
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    padding: 14px 18px 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: 326px;
+    height: 446px;
+    border-radius: 5px;
+`
+
+const NetBalance = styled.div`
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+`
+const Currency = styled.div`
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+`
+
+const OpBracket = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+`
