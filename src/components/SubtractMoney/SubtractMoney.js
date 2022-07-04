@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import styled from 'styled-components';
 
-export default function AddMoney() {
+export default function SubtractMoney() {
     const navigate = useNavigate();
     const {token} = React.useContext(UserContext);
     const {userData, setUserData} = React.useContext(UserContext);
@@ -19,7 +19,7 @@ export default function AddMoney() {
             description
         };
 
-        const appendRequest = axios.put("http://localhost:5000/add-operation", body, token);
+        const appendRequest = axios.put("http://localhost:5000/subtract-operation", body, token);
         appendRequest.then(answer => {
             alert("Deu certo!!!");
             navigate("/historico");
@@ -33,12 +33,12 @@ export default function AddMoney() {
     return(
         <Container>
             <TitleBox>
-                Nova entrada
+                Nova saída
             </TitleBox>
             <Form onSubmit={handleTransaction}>
-                <input type="number" name="value" placeholder="Valor" min="0" step="0.01" onChange={e => setValue(e.target.value)} required />
+                <input type="number" name="value" placeholder="Valor" min="0" step="0.01" onChange={e => setValue((e.target.value)*(-1))} required />
                 <input type="text" name="description" placeholder="Descrição" onChange={e => setDescription(e.target.value)} required />
-                <button type="submit">Salvar entrada</button>
+                <button type="submit">Salvar saída</button>
             </Form>
         </Container>
     );

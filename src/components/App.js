@@ -4,6 +4,7 @@ import LoginScreen from "./LoginScreen/LoginScreen";
 import RegisterScreen from './RegisterScreen/RegisterScreen';
 import AccountBalance from './AccountBalance/AccountBalance';
 import AddMoney from './AddMoney/AddMoney';
+import SubtractMoney from './SubtractMoney/SubtractMoney';
 import React from 'react';
 import UserContext from "../contexts/UserContext";
 
@@ -18,6 +19,7 @@ export default function App() {
                     <Route path="/cadastro" element={<RegisterScreen />} />
                     <Route path='/historico' element={<AccountBalance />} />
                     <Route path='/adicionar' element={<AddMoney />} />
+                    <Route path='/retirar' element={<SubtractMoney />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

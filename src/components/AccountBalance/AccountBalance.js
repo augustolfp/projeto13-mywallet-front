@@ -47,6 +47,7 @@ export default function AccountBalance() {
         </BalanceBox>
         
         <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
+        <button onClick={() => navigate("/retirar")} >Nova saída</button>
         </Container> 
     );
 }
