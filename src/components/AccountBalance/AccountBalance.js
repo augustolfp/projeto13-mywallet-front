@@ -45,9 +45,11 @@ export default function AccountBalance() {
                 <Currency>{parseFloat(userData.balance).toFixed(2)}</Currency>
             </OpBracket>
         </BalanceBox>
-        
-        <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
-        <button onClick={() => navigate("/retirar")} >Nova saída</button>
+
+        <ButtonBox>
+            <button onClick={() => navigate("/adicionar")} >Nova entrada</button>
+            <button onClick={() => navigate("/retirar")} >Nova saída</button>
+        </ButtonBox>
         </Container> 
     );
 }
@@ -60,17 +62,7 @@ const Container = styled.div`
     height: 100vh;
     background-color: #8C11BE;
 
-    button {
-        width: 155px;
-        height: 114px;
-        background-color: #A328D6;
-        border-style: none;
-        border-radius: 5px;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 700;
-        font-size: 17px;
-        color: white;
-    }
+
 `
 const NameBox = styled.div`
     margin: 25px;
@@ -107,4 +99,24 @@ const OpBracket = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+`
+
+const ButtonBox = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 326px;
+    margin-top: 15px;
+
+    button {
+        width: 156px;;
+        height: 114px;
+        background-color: #A328D6;
+        border-style: none;
+        border-radius: 5px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        color: white;
+    }
+
 `
