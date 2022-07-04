@@ -6,17 +6,32 @@ import axios from 'axios';
 
 export default function AccountBalance() {
     const {token} = React.useContext(UserContext);
+    const [userData, setUserdata] = React.useState([]);
 
     useEffect(() => {
-        console.log(token)
         const requestBalance = axios.get("http://localhost:5000/get-balance", token);
         requestBalance.then(answer => {
-            console.log(answer);
+            console.log(answer.data)
+            setUserdata(answer.data);
         });
         requestBalance.catch(answer => console.log(answer));
     },[]);
 
+    function PrintBalance() {
+        if(userData.transactions) {
+            return userData.transactions.map((obj, index) => <h2 key={index}>{obj.description}   {obj.value}</h2>);
+        }
+        else {
+            return <h2>Carregando...</h2>
+        }
+    }
+
     return(
-        <h1>nadaaaaaaaaaa</h1>
+        <>
+        <h1>Olá, {userData.name}</h1>
+        <div>
+            <PrintBalance />
+        </div>
+        </> 
     );
 }
